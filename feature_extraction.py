@@ -57,8 +57,8 @@ def extract_geometry_features(frame):
         except:
             pass
 
-    # Cone width = width at base of bounding box
-    # Jet symmetry = horizontal symmetry: diff between left and right mass
+    # cone width = width at base of bounding box
+    # jet symmetry = horizontal symmetry: diff between left and right mass
     mask = np.zeros_like(gray)
     cv2.drawContours(mask, [c], -1, 255, -1)
     left_mass = float(np.sum(mask[:, :mask.shape[1] // 2]))
