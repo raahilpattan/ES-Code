@@ -23,6 +23,7 @@ from visualization import (
 video_path = "C:/Users/raahi/Downloads/ES Videos/no_anomaly_12kV_1.0mLhr_15cm_10_v1.mov" # insert video path
 features = process_video(video_path)
 
+#error handling
 if features.size == 0 or len(features.shape) != 2:
     raise ValueError(f"video feature extraction failed: {video_path} (is the path and format correct?)")
 
@@ -110,7 +111,7 @@ plot_side_vs_top_scatter(
 
 print("Monitoring complete. EWMA statistics and anomalies saved.")
 
-
+# -------ignore------
 #print("side actual width (first 10):", features[:10, 5])
 #print("side reconstructed width (first 10):", reconstructed[:10, 5])
 #print("top actual width (first 10):", features[:10, 9])
