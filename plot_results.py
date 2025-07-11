@@ -7,7 +7,7 @@ anomalies = np.load("anomalies.npy")
 ewma = np.load("ewma_stat.npy")
 frames = np.arange(len(features))
 
-# --- EWMA Monitoring Chart ---
+# EWMA monitoring chart
 plt.figure(figsize=(10, 4))
 plt.plot(frames, ewma, label="EWMA Monitoring Stat", linewidth=2)
 plt.axhline(np.mean(ewma) + 3*np.std(ewma), color='r', linestyle='--', label="UCL (3σ)")
@@ -19,7 +19,7 @@ plt.grid(True)
 plt.tight_layout()
 plt.show()
 
-# --- Anomaly Magnitude by Feature Group ---
+# anomaly magnitude by feature group
 plt.figure(figsize=(12, 6))
 plt.plot(frames, np.linalg.norm(anomalies[:, 0:4], axis=1), label="Centerline (cx, cy)", linewidth=2)
 plt.plot(frames, np.linalg.norm(anomalies[:, 4:8], axis=1), label="Side Geometry", linewidth=2)
@@ -32,7 +32,7 @@ plt.grid(True)
 plt.tight_layout()
 plt.show()
 
-# --- Actual vs Reconstructed Comparison: Jet Angle (Side + Top) ---
+# actual vs reconstructed comparison --> jet angle (side + top) 
 plt.figure(figsize=(12, 5))
 plt.plot(frames, features[:, 4], label="Actual Side Angle", alpha=0.7)
 plt.plot(frames, reconstructed[:, 4], label="Reconstructed Side Angle", linestyle='--')
@@ -46,7 +46,7 @@ plt.grid(True)
 plt.tight_layout()
 plt.show()
 
-# --- Actual vs Reconstructed: Symmetry (Side + Top) ---
+# actual vs reconstructed comparison --> symmetry (side + top) 
 plt.figure(figsize=(12, 5))
 plt.plot(frames, features[:, 6], label="Actual Side Symmetry", alpha=0.7)
 plt.plot(frames, reconstructed[:, 6], label="Reconstructed Side Symmetry", linestyle='--')
@@ -60,7 +60,7 @@ plt.grid(True)
 plt.tight_layout()
 plt.show()
 
-# --- Actual vs Reconstructed: Cone Width (Side + Top) ---
+# actual vs reconstructed comparison --> taylor cone width (side + top) 
 plt.figure(figsize=(12, 5))
 plt.plot(frames, features[:, 5], label="Actual Side Width", alpha=0.7)
 plt.plot(frames, reconstructed[:, 5], label="Reconstructed Side Width", linestyle='--')
